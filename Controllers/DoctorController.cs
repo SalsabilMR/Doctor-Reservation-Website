@@ -72,7 +72,7 @@ namespace DoctorReservation.Controllers
             if (ModelState.IsValid)
             {
                 var doc = DocServices.GetDetails(doctor.Id);
-                DocServices.Edit(doctor);
+                DocServices.Edit(doc); // may be error
                 return RedirectToAction("Index");
             }
 

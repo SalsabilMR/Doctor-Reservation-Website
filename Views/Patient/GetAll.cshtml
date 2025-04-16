@@ -1,0 +1,14 @@
+﻿@model List<Patient>
+@{
+    ViewData["Title"] = "Get All patients";
+}
+
+<h1>GetAll</h1>
+@foreach (var patient in Model)
+{
+    <h1>@patient.FirstName</h1>
+    <h1>@patient.LastName</h1>
+    <h1>@patient._Gender</h1>
+    <h1>@patient.BirthOfDate.ToShortDateString()</h1>
+    <h1>@patient.Mobile</h1>
+}

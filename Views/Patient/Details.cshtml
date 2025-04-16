@@ -1,0 +1,12 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Show Details</h2>
+
+<h1>@Model.FirstName</h1>
+<h1>@Model.LastName</h1>
+<h1>@Model._Gender</h1>
+<h1>@Model.BirthOfDate.ToLongDateString()</h1>
+<h1>@Model.Mobile</h1>

@@ -16,6 +16,7 @@ namespace DoctorReservation
             //Services
             builder.Services.AddDbContext<DoctorReservationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Local")));
             builder.Services.AddScoped<DoctorServices>();
+            builder.Services.AddScoped<PatientServices>();
 
 
             var app = builder.Build();
