@@ -67,7 +67,6 @@ namespace DoctorReservation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var Pat = PatientServices.GetDetails(Patient.Id);
                 PatientServices.Edit(Patient);
                 return RedirectToAction("Index");
             }
