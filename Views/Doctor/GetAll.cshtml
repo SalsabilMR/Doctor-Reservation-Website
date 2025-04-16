@@ -1,0 +1,21 @@
+﻿@model List<Doctor>
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+<h1>GetAll</h1>
+@foreach(var doctor in Model)
+{
+    <h1>@doctor.FirstName</h1>
+    <h1>@doctor.LastName</h1>
+    <h1>@doctor.City</h1>
+    <h1>@doctor.Location</h1>
+    <h1>@doctor.Email</h1>
+    <h1>@doctor.Fees</h1>
+    <h1>@doctor.Description</h1>
+    <h1>@doctor.specialization</h1>
+    <h1>@doctor.Fees</h1>
+    <img src="@Url.Content("~/" + @doctor.ImagePath)" alt="Doctor Image" width="200" />
+
+
+}

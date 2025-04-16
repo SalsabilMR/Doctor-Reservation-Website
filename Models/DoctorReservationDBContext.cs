@@ -8,6 +8,7 @@ namespace DoctorReservation.Models
     {
         public DoctorReservationDBContext()
         {
+            
         }
         public DoctorReservationDBContext(DbContextOptions<DoctorReservationDBContext> options) : base(options)
         {

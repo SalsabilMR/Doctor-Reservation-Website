@@ -1,4 +1,5 @@
 using DoctorReservation.Models;
+using DoctorReservation.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorReservation
@@ -14,7 +15,7 @@ namespace DoctorReservation
 
             //Services
             builder.Services.AddDbContext<DoctorReservationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Local")));
-
+            builder.Services.AddScoped<DoctorServices>();
 
 
             var app = builder.Build();
