@@ -1,0 +1,16 @@
+﻿@model DoctorReservation.Models.Doctor
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Show Details</h2>
+
+<h1>@Model.FirstName</h1>
+<h1>@Model.LastName</h1>
+<h1>@Model.City</h1>
+<h1>@Model.Location</h1>
+<h1>@Model.Email</h1>
+<h1>@Model.Description</h1>
+<h1>@Model.specialization</h1>
+<h1>@Model.Fees</h1>
+<img src="@Url.Content("~/" + @Model.ImagePath)" alt="Doctor" width="200" />

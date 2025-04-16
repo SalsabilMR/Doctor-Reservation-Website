@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\DoctorReservation.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\Uploads\\Images\\581383d5-e2bc-402c-b727-2c2c59f48d2f.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\Images\\581383d5-e2bc-402c-b727-2c2c59f48d2f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\Uploads\\Images\\ac8fa8f7-6f1f-4dbc-8179-25f5952bc84a.png",
+      "PackagePath": "staticwebassets\\Uploads\\Images\\ac8fa8f7-6f1f-4dbc-8179-25f5952bc84a.png"
+    },
+    {
       "Id": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

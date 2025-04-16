@@ -6,6 +6,9 @@ namespace DoctorReservation.Models
 {
     public class DoctorReservationDBContext :IdentityDbContext
     {
+        public DoctorReservationDBContext()
+        {
+        }
         public DoctorReservationDBContext(DbContextOptions<DoctorReservationDBContext> options) : base(options)
         {
         }

@@ -1,62 +1,145 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DoctorReservation.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace DoctorReservation.Controllers
 {
+
     public class DoctorController : Controller
     {
-        // GET: DoctorController1
+        DoctorReservationDBContext Context; //= new DoctorReservationDBContext();
+        public DoctorController(DoctorReservationDBContext Context)
+        {
+            this.Context = Context;
+        }
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: DoctorController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var doc = Context.Doctors.FirstOrDefault(x => x.Id == id);
+            return View(doc);
         }
 
-        // GET: DoctorController1/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DoctorController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Doctor doctor)
         {
-            try
+            if(ModelState.IsValid)
+
             {
-                return RedirectToAction(nameof(Index));
+                if (doctor.Image != null && doctor.Image.Length > 0)
+                {
+                    // Image Name
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(doctor.Image.FileName);
+
+                    // Full Path wwwroot/uploads
+                    string fullPath = Path.Combine("wwwroot/uploads/Images/", fileName);
+
+                    // Save Image
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        doctor.Image.CopyTo(stream);
+                    }
+
+                    // Save path in Database
+                    doctor.ImagePath = "uploads/Images/" + fileName;
+                }
+
+                if (doctor.Certificate != null && doctor.Certificate.Length > 0)
+                {
+                    // File Name
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(doctor.Certificate.FileName);
+
+                    // Full Path wwwroot/uploads
+                    string fullPath = Path.Combine("wwwroot/uploads/Certificates/", fileName);
+
+                    // Save File
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        doctor.Certificate.CopyTo(stream);
+                    }
+
+                    // Save path in Database
+                    doctor.CertificatePath = "uploads/Certificates/" + fileName;
+                }
+
+                Context.Doctors.Add(doctor);
+                Context.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-            catch
-            {
+            
                 return View();
-            }
+            
         }
 
-        // GET: DoctorController1/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var doc = Context.Doctors.FirstOrDefault(x => x.Id == id);
+            return View(doc);
         }
 
-        // POST: DoctorController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Doctor doctor, IFormFile NewImage)
         {
-            try
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var doc = Context.Doctors.FirstOrDefault(x => x.Id == doctor.Id);
+                doc.FirstName = doctor.FirstName;
+                doc.LastName = doctor.LastName;
+                doc.City = doctor.City;
+                doc.Location = doctor.Location;
+                doc.Email = doctor.Email;
+                doc.Mobile = doctor.Mobile;
+                doc.Fees = doctor.Fees;
+                doc.specialization = doctor.specialization;
+                doc.Description = doctor.Description;
+
+
+                // لو فيه صورة جديدة
+                if (NewImage != null && NewImage.Length > 0)
+                {
+                    // حذف الصورة القديمة من السيرفر (اختياري)
+                    if (!string.IsNullOrEmpty(doc.ImagePath))
+                    {
+                        var oldPath = Path.Combine("wwwroot", doc.ImagePath);
+                        if (System.IO.File.Exists(oldPath))
+                        {
+                            System.IO.File.Delete(oldPath);
+                        }
+                    }
+
+                    // رفع الصورة الجديدة
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(NewImage.FileName);
+                    string fullPath = Path.Combine("wwwroot/uploads/Images/", fileName);
+
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        doc.Image.CopyToAsync(stream);
+                    }
+
+                    doc.ImagePath = "uploads/Images/" + fileName;
+                }
+
+                Context.SaveChanges();
+          
+
+                return RedirectToAction("Index");
             }
-            catch
-            {
+                
                 return View();
-            }
+            
         }
 
         // GET: DoctorController1/Delete/5

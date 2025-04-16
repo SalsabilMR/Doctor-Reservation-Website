@@ -1,24 +1,36 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DoctorReservation.Models
 {
     public class Doctor
     {
         public int Id { get; set; }
+        [Required(ErrorMessage ="Please enter your first name")]
         public string? FirstName { get; set; }
+        [Required(ErrorMessage = "Please enter your last name")]
         public string? LastName { get; set; }
+        [Required(ErrorMessage = "Please enter your city")]
         public string? City { get; set; }
+        [Required(ErrorMessage = "Please enter your location")]
         public string? Location { get; set; }
+        [Required(ErrorMessage = "Please enter your email")]
         public string? Email { get; set; }
+        [Required(ErrorMessage = "Please enter your Mobile")]
         public int Mobile { get; set; }
+        [Required(ErrorMessage = "Please enter your fees")]
         public int Fees { get; set; }
+        [Required(ErrorMessage = "Please enter your specialization")]
         public string? specialization { get; set; }
+        [Required(ErrorMessage = "Please enter your Description")]
         public string? Description { get; set; }
-        
-        public string? CertificatePath { get; set; } //save file name in DB
+
+        [Required(ErrorMessage = "Please enter your Certificate")]
+        public string? CertificatePath { get; set; } //save file name & file path in DB
         [NotMapped]
         public IFormFile? Certificate { get; set; } //recieve file when upload
 
+        [Required(ErrorMessage = "Please enter your Image")]
         public string? ImagePath { get; set; } //save file name in DB
         [NotMapped]
         public IFormFile? Image { get; set; }

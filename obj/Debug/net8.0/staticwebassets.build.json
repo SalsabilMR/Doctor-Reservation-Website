@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jLeyRJYV6JnwQHR0DuxF1IqKu5mpCYfnUWugrykcoho=",
+  "Hash": "TZ9D85l8AsyLP3qStBTtShs/QPi6iyBc7hgs0E0Yos0=",
   "Source": "DoctorReservation",
   "BasePath": "_content/DoctorReservation",
   "Mode": "Default",
@@ -1193,6 +1193,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\Uploads\\Images\\581383d5-e2bc-402c-b727-2c2c59f48d2f.jpg",
+      "SourceId": "DoctorReservation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\",
+      "BasePath": "_content/DoctorReservation",
+      "RelativePath": "Uploads/Images/581383d5-e2bc-402c-b727-2c2c59f48d2f.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Images\\581383d5-e2bc-402c-b727-2c2c59f48d2f.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\Uploads\\Images\\ac8fa8f7-6f1f-4dbc-8179-25f5952bc84a.png",
+      "SourceId": "DoctorReservation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Adam\\source\\repos\\DoctorReservation\\wwwroot\\",
+      "BasePath": "_content/DoctorReservation",
+      "RelativePath": "Uploads/Images/ac8fa8f7-6f1f-4dbc-8179-25f5952bc84a.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Images\\ac8fa8f7-6f1f-4dbc-8179-25f5952bc84a.png"
     }
   ]
 }

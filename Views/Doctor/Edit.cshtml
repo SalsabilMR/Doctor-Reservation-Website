@@ -1,0 +1,99 @@
+﻿@model Doctor
+@{
+    ViewData["Title"] = "Edit Doctor";
+}
+
+<h2>Edit Doctor</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" value="@Model.FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" value="@Model.LastName" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" value="@Model.City" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control" value="@Model.Location" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" value="@Model.Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Mobile"></label>
+        <input asp-for="Mobile" class="form-control" value="@Model.Mobile" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Fees"></label>
+        <input asp-for="Fees" class="form-control" value="@Model.Fees" />
+        <span asp-validation-for="Fees" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="specialization"></label>
+        <input asp-for="specialization" class="form-control" value="@Model.specialization" />
+        <span asp-validation-for="specialization" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" value="@Model.Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <div class="form-group">
+            <label>Current Image:</label><br />
+            <img src="@Url.Content("~/" + Model.ImagePath)" alt="Current Image" width="150" />
+        </div>
+    }
+    <div class="form-group">
+        <label asp-for="Image">Upload New Image</label>
+        <input asp-for="Image" type="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+ 
+    @if (!string.IsNullOrEmpty(Model.CertificatePath))
+    {
+        <div class="form-group">
+            <label>Current Certificate:</label><br />
+            <img src="@Url.Content("~/" + Model.CertificatePath)" alt="Current Image" width="150" />
+        </div>
+    }
+    <div class="form-group">
+        <label asp-for="Certificate">Upload New Certificate</label>
+        <input asp-for="Certificate" type="file" class="form-control" />
+        <span asp-validation-for="Certificate" class="text-danger"></span>
+    </div>
+ 
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+@* 
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+ *@

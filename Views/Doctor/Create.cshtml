@@ -1,0 +1,90 @@
+﻿
+@model Doctor
+@{
+    ViewData["Title"] = "Add Doctor";
+}
+
+<h2>Add Doctor</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group col-lg-4 col-md-6" data-aos="fade-up">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6" data-aos="fade-up">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Mobile"></label>
+        <input asp-for="Mobile" class="form-control" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Fees"></label>
+        <input asp-for="Fees" class="form-control" />
+        <span asp-validation-for="Fees" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="specialization"></label>
+        <input asp-for="specialization" class="form-control" />
+        <span asp-validation-for="specialization" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Certificate"></label>
+        <input asp-for="Certificate" type="file" class="form-control" />
+        <span asp-validation-for="Certificate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" type="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-group col-lg-4 col-md-6">
+        <label asp-for="Certificate"></label>
+        <input asp-for="Certificate" type="file" class="form-control" />
+        <span asp-validation-for="Certificate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
