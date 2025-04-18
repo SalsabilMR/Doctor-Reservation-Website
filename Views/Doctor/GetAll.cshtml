@@ -1,22 +1,46 @@
 ﻿@model List<Doctor>
 @{
     ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
 
-<h1>GetAll</h1>
-@foreach(var doctor in Model)
+<section id="doctors" class="doctors section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Doctors</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div><!-- End Section Title -->
+    <div class="container">
+
+        <div class="row gy-4">
+    @foreach(var doctor in Model)
 {
-    <h1>@doctor.FirstName</h1>
-    <h1>@doctor.LastName</h1>
-    <h1>@doctor.City</h1>
-    <h1>@doctor.Location</h1>
-    <h1>@doctor.Email</h1>
-    <h1>@doctor.Mobile</h1>
-    <h1>@doctor.Fees</h1>
-    <h1>@doctor.Description</h1>
-    <h1>@doctor.specialization</h1>
-    <h1>@doctor.Fees</h1>
-    <img src="@Url.Content("~/" + @doctor.ImagePath)" alt="Doctor Image" width="200" />
+    
 
+            <div class="col-lg-6" data-aos="fade-up" >
+                <div class="team-member d-flex align-items-start">
+                        <div class="pic"><img src="@Url.Content("~/" + @doctor.ImagePath)" alt="Doctor Image" width="200" class="img-fluid" ></div>
+                    <div class="member-info">
+                            <h4>@doctor.FirstName  @doctor.LastName</h4>
+                            <span>@doctor.specialization</span>
+                            <p>@doctor.Description</p>
+                            <p>@doctor.Fees</p>
+                        <div class="social"> <i class="bi bi-geo-alt-fill">  @doctor.City | @doctor.Location</i></div>
+                        <div class="social"><i class="bi bi-envelope-at-fill">  @doctor.Email</i></div>
+                        <div class="social"> <i class="bi bi-phone-fill">  @doctor.Mobile</i></div>
 
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
+
+       
 }
+        </div>
+
+    </div>
+
+<!-- Doctors Section -->
+
+
+</section><!-- /Doctors Section -->

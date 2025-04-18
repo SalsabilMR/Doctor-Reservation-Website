@@ -6,7 +6,6 @@
 
 <div class="container">
 <div class="row gy-4">
-
     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
         <div class="team-member d-flex align-items-start">
                 <div class="pic"><img src="@Url.Content("~/" + @Model.ImagePath)" width="200" class="img-fluid" alt="Doctor Image"></div>
@@ -15,17 +14,12 @@
                     <p>specialization : @Model.specialization</p>
                     <span>@Model.Description</span>
                     <p>Fees : @Model.Fees</p>
-                <div class="social">
-                   <i class="bi bi-geo-alt-fill">  @Model.City | @Model.Location</i>
-                </div>
-                <div class="social">
-                   <i class="bi bi-envelope-at-fill">  @Model.Email</i>
-                </div>
-                <div class="social">
-                   <i class="bi bi-phone-fill">  @Model.Mobile</i>
-                </div>
+                <div class="social"> <i class="bi bi-geo-alt-fill">  @Model.City | @Model.Location</i></div>
+                <div class="social"><i class="bi bi-envelope-at-fill">  @Model.Email</i></div>
+                <div class="social"> <i class="bi bi-phone-fill">  @Model.Mobile</i></div>
                 
             </div>
         </div>
     </div><!-- End Team Member -->
+</div>
 </div>
