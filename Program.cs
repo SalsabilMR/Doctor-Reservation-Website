@@ -1,5 +1,6 @@
 using DoctorReservation.Models;
 using DoctorReservation.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorReservation
@@ -13,10 +14,14 @@ namespace DoctorReservation
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //builder.Services.AddSession(s=>s.IdleTimeout = TimeSpan.FromMinutes(2));
+            builder.Services.AddSession();
+
             //Services
             builder.Services.AddDbContext<DoctorReservationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Local")));
             builder.Services.AddScoped<DoctorServices>();
             builder.Services.AddScoped<PatientServices>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole> ().AddEntityFrameworkStores<DoctorReservationDBContext>();
 
 
             var app = builder.Build();
@@ -35,6 +40,8 @@ namespace DoctorReservation
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",
