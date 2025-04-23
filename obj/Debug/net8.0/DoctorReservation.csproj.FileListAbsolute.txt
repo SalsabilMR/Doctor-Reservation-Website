@@ -517,8 +517,8 @@ E:\full stack\graduation project\adding doctor and patient\obj\Debug\net8.0\Doct
 E:\full stack\graduation project\adding doctor and patient\obj\Debug\net8.0\ref\DoctorReservation.dll
 C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\appsettings.json
-C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\DoctorReservation.staticwebassets.endpoints.json
 C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\DoctorReservation.staticwebassets.runtime.json
+C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\DoctorReservation.staticwebassets.endpoints.json
 C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\DoctorReservation.exe
 C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\DoctorReservation.deps.json
 C:\Users\AG\Desktop\register and login\bin\Debug\net8.0\DoctorReservation.runtimeconfig.json

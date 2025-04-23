@@ -48,7 +48,7 @@ namespace DoctorReservation.Controllers
 
             {
                 PatientServices.Create(Patient);
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             return View(Patient);

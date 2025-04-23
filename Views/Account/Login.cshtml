@@ -11,18 +11,21 @@
     <title>Login Page</title>
 </head>
 <body>
-    <div class="container mt-5">
+    <form method="post">
+       <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h2 class="text-center">Login</h2>
                 <form>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" required>
+                        <label asp-for="UserName"></label>
+		                <input asp-for="UserName" class="form-control" />
+	                	<span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" required>
+                       <label asp-for="Password"></label>
+		               <input asp-for="Password" class="form-control" />
+	                	<span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
@@ -34,10 +37,11 @@
                 </div>
             </div>
         </div>
-    </div>
+       </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </form>
 </body>
 </html>
 

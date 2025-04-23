@@ -13,9 +13,11 @@ namespace DoctorReservation.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Password Not Identical...")]
         public string ConfirmPassword { get; set; }
+       
+        [Required]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+      //  public string FirstName { get; set; }
+        // public string LastName { get; set; }
     }
 }
