@@ -70,7 +70,10 @@ namespace DoctorReservation.Controllers
                 {
                     return RedirectToAction("Create", "Doctor", new { userId = user.Id });
                 }
-
+                else if (redirectTarget == "Patient")
+                {
+                    return RedirectToAction("Create", "Patient", new { userId = user.Id });
+                }
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -115,27 +118,42 @@ namespace DoctorReservation.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await _userManager.FindByNameAsync(loginUser.UserName);
+
                 if (user != null)
                 {
-                    //SignIn
-                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user, loginUser.Password, false, false);
+                    var result = await _signInManager.PasswordSignInAsync(user, loginUser.Password, false, false);
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Details", "Patient");
+                        // 🔍 نحسب الرول هنا
+                        if (await _userManager.IsInRoleAsync(user, "Doctor"))
+                        {
+                            return RedirectToAction("Profile", "Doctor", new { userId = user.Id });
+                        }
+                        else if (await _userManager.IsInRoleAsync(user, "User"))
+                        {
+                            return RedirectToAction("Profile", "Patient", new { userId = user.Id });
+                        }
+                        else
+                        {
+                            // لو له رول تاني أو مفيش رول
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Inavalied Password");
+                        ModelState.AddModelError("", "❌ Invalid Password");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalied User Name Or Password");
+                    ModelState.AddModelError("", "❌ Invalid Username or Password");
                 }
             }
+
             return View(loginUser);
         }
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

@@ -78,6 +78,12 @@ namespace DoctorReservation.Controllers
             return View();
         }
 
+        public IActionResult Profile(string userId)
+        {
+            ViewBag.UserId = userId; // مؤقتًا لعرض ID
+            return View();
+        }
+
         public IActionResult Delete(int id)
         {
 

@@ -1480,13 +1480,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\DoctorReservation.s9neztat6y.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-sBuOQuj9LV7PY2Ui8x8NB4WuOa4lNFoDg\u002BfQq3rGdAU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1135"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022sBuOQuj9LV7PY2Ui8x8NB4WuOa4lNFoDg\u002BfQq3rGdAU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 24 Apr 2025 02:22:56 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1135"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022sBuOQuj9LV7PY2Ui8x8NB4WuOa4lNFoDg\u002BfQq3rGdAU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 24 Apr 2025 17:39:10 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DoctorReservation/DoctorReservation.s9neztat6y.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\DoctorReservation.s9neztat6y.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"s9neztat6y"},{"Name":"integrity","Value":"sha256-sBuOQuj9LV7PY2Ui8x8NB4WuOa4lNFoDg\u002BfQq3rGdAU="},{"Name":"label","Value":"_content/DoctorReservation/DoctorReservation.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1135"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022sBuOQuj9LV7PY2Ui8x8NB4WuOa4lNFoDg\u002BfQq3rGdAU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 24 Apr 2025 02:22:56 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1135"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022sBuOQuj9LV7PY2Ui8x8NB4WuOa4lNFoDg\u002BfQq3rGdAU=\u0022"},{"Name":"Last-Modified","Value":"Thu, 24 Apr 2025 17:39:10 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DoctorReservation/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>

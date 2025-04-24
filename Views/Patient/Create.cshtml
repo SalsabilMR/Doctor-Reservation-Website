@@ -9,6 +9,9 @@
 
 <form asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="ApplicationUserId" value="@ViewBag.UserId" />
+
+
 
     <div class="form-group col-lg-4 col-md-6" data-aos="fade-up">
         <label asp-for="FirstName"></label>

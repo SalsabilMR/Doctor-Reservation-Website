@@ -34,12 +34,14 @@ namespace DoctorReservation.Controllers
             }
             return View(Patient);
         }
-
-        public IActionResult Create()
+        [HttpGet]
+        public IActionResult Create(string userId)
         {
+
+            ViewBag.UserId = userId;
             return View();
         }
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Patient Patient)
@@ -48,7 +50,7 @@ namespace DoctorReservation.Controllers
 
             {
                 PatientServices.Create(Patient);
-                return RedirectToAction("Create");
+                return RedirectToAction("Profile", "Patient", new { userId = Patient.ApplicationUserId });
             }
 
             return View(Patient);
@@ -73,6 +75,13 @@ namespace DoctorReservation.Controllers
 
             return View();
         }
+
+        public IActionResult Profile(string userId)
+        {
+            ViewBag.UserId = userId; // مؤقتًا
+            return View();
+        }
+  
 
         public IActionResult Delete(int id)
         {
