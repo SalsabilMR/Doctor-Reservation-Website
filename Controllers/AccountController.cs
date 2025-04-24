@@ -11,10 +11,14 @@ namespace DoctorReservation.Controllers
     {
         UserManager<ApplicationUser> _userManager;
         SignInManager<ApplicationUser> _signInManager;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        RoleManager<IdentityRole> _roleManager;
+
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
+
         }
 
         [HttpGet]
@@ -44,8 +48,8 @@ namespace DoctorReservation.Controllers
             {
                 UserName = newUser.UserName,
                 Email = newUser.EmailAddress,
-                //FirstName = newUser.FirstName,
-                //LastName = newUser.LastName
+                // FirstName = newUser.FirstName,
+                // LastName = newUser.LastName
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, newUser.Password);
@@ -53,7 +57,20 @@ namespace DoctorReservation.Controllers
             if (result.Succeeded)
             {
                 Console.WriteLine("✅ User Created");
-                await _userManager.AddToRoleAsync(user, "User");
+
+                var selectedRole = Request.Form["Role"].ToString();
+                var redirectTarget = Request.Form["Redirect"].ToString();
+
+                if (selectedRole != "Doctor" && selectedRole != "User")
+                    selectedRole = "User"; // fallback
+
+                await _userManager.AddToRoleAsync(user, selectedRole);
+
+                if (redirectTarget == "Doctor")
+                {
+                    return RedirectToAction("Create", "Doctor", new { userId = user.Id });
+                }
+
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -68,6 +85,24 @@ namespace DoctorReservation.Controllers
 
             return View(newUser);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateRoles()
+        {
+            string[] roles = { "User", "Doctor", "Admin" };
+
+            foreach (var role in roles)
+            {
+                if (!await _roleManager.RoleExistsAsync(role))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(role));
+                    Console.WriteLine($"✅ Created Role: {role}");
+                }
+            }
+
+            return Content("✅ Roles created successfully!");
+        }
+
 
         [HttpGet]
         public IActionResult Login()
