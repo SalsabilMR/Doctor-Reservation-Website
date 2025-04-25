@@ -1,2 +1,14 @@
-﻿<h2>Welcome, Patient @ViewBag.UserId</h2>
+﻿@model DoctorReservation.Models.Patient
+
+<div class="container mt-4">
+    <h2 class="mb-4"> Patient Profile </h2>
+
+    <div class="card p-3">
+        <p><strong>Name:</strong> @Model.FirstName @Model.LastName</p>
+        <p><strong>Gender:</strong> @Model._Gender</p>
+        <p><strong>BirthDate:</strong> @Model.BirthOfDate.ToShortDateString()</p>
+        <p><strong>Mobile:</strong> @Model.Mobile</p>
+    </div>
+</div>
+
 

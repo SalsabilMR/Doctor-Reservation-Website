@@ -78,8 +78,15 @@ namespace DoctorReservation.Controllers
 
         public IActionResult Profile(string userId)
         {
-            ViewBag.UserId = userId; // مؤقتًا
-            return View();
+            var patient = PatientServices.GetAll()?.FirstOrDefault(p => p.ApplicationUserId == userId);
+
+            if (patient == null)
+            {
+               
+                return RedirectToAction("Create", new { userId = userId });
+            }
+
+            return View(patient);
         }
   
 

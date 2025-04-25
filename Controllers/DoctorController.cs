@@ -39,8 +39,10 @@ namespace DoctorReservation.Controllers
             return View(doctor);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(string userId)
         {
+            ViewBag.UserId = userId;
+
             return View();
         }
 
@@ -52,10 +54,10 @@ namespace DoctorReservation.Controllers
 
             {
                 DocServices.Create(doctor);
-                return RedirectToAction("Index");
+                return RedirectToAction("Profile", new { userId = doctor.ApplicationUserId });
             }
-            
-                return View(doctor);
+
+            return View(doctor);
             
         }
 
@@ -72,7 +74,7 @@ namespace DoctorReservation.Controllers
             if (ModelState.IsValid)
             {
                 DocServices.Edit(doctor); 
-                return RedirectToAction("Index");
+                return RedirectToAction("Doctor");
             }
 
             return View();
@@ -80,8 +82,14 @@ namespace DoctorReservation.Controllers
 
         public IActionResult Profile(string userId)
         {
-            ViewBag.UserId = userId; // مؤقتًا لعرض ID
-            return View();
+            var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
+
+            if (doctor == null)
+            {
+                return RedirectToAction("Create", new { userId = userId });
+            }
+
+            return View(doctor);
         }
 
         public IActionResult Delete(int id)
