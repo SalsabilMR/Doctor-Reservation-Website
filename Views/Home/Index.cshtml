@@ -1,8 +1,50 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<DoctorReservation.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Main Page";
+    var specializations = ViewBag.Specializations as List<string>;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1> Welcome to TABIBAK Website</h1>
+        <p class="lead"> You Can Find Your Doctor Easily</p>
+    </div>
+
+    <div class="mb-5">
+        <h3> Avilable Specialization </h3>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+            @foreach (var spec in specializations)
+            {
+                <span class="badge bg-info text-dark p-2">@spec</span>
+            }
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h3>Some available doctors  </h3>
+        <div class="row">
+            @foreach (var doc in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@doc.ImagePath" class="card-img-top" alt="Doctor Image " style="height: 200px; object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@doc.FirstName @doc.LastName</h5>
+                            <p class="card-text">
+                                Apecialization: <strong>@doc.specialization</strong><br />
+                                City: @doc.City<br />
+                                Fee: @doc.Fees L.E
+                            </p>
+                            <a asp-controller="Doctor" asp-action="Details" asp-route-id="@doc.Id" class="btn btn-primary">View Details </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center">
+            <a asp-controller="Doctor" asp-action="GetAll" class="btn btn-outline-dark mt-3">View All Doctors  </a>
+        </div>
+    </div>
 </div>
