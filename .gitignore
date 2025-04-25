@@ -1,1 +1,16 @@
-.vs/
+# Visual Studio build files
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# User-specific files
+*.user
+*.suo
+
+# Others
+*.vs/
+.vscode/
