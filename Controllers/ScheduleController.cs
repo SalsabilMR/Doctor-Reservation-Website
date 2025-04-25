@@ -3,6 +3,7 @@ using DoctorReservation.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace DoctorReservation.Controllers
 {
@@ -28,7 +29,18 @@ namespace DoctorReservation.Controllers
         // GET: ScheduleController/Create
         public ActionResult Create()
         {
-            return View();
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var doctor = scheduleServices.GetDoctorByUserId(userId);
+            if (doctor == null)
+            {
+                return Unauthorized();
+            }
+            var model = new Schedule
+            {
+                DoctorId = doctor.Id
+            };
+
+            return View(model);
         }
 
         // POST: ScheduleController/Create
@@ -36,8 +48,19 @@ namespace DoctorReservation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Schedule schedule)
         {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var doctor = scheduleServices.GetDoctorByUserId(userId);
+
+            if (doctor == null)
+            {
+                return Unauthorized();
+            }
+            schedule.DoctorId = doctor.Id;
+
             if (ModelState.IsValid)
             {
+                scheduleServices.Create(schedule);
+                return RedirectToAction("Index", "Doctor");
             }
 
             return View(schedule);

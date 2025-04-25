@@ -1,0 +1,50 @@
+﻿
+@model Schedule
+
+@{
+    ViewData["Title"] = "Add Schedule";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml"; 
+}
+
+<h2>Add Schedule</h2>
+
+<form asp-action="Create" method="post">
+   
+    <input type="hidden" asp-for="DoctorId" />
+    <div class="row">
+    <div class="form-group col-6">
+        <label asp-for="DayOfWeek" class="control-label">اليوم</label>
+        <select asp-for="DayOfWeek" class="form-control" asp-items="Html.GetEnumSelectList<DayOfWeek>()">
+            <option value="">Choose Day</option>
+        </select>
+        <span asp-validation-for="DayOfWeek" class="text-danger"></span>
+    </div>
+        <div class="form-group col-6">
+            <label asp-for="AppointmentDurationInMinutes" class="control-label">Appointment Duration In Minutes</label>
+            <input asp-for="AppointmentDurationInMinutes" class="form-control" type="number" min="1" />
+            <span asp-validation-for="AppointmentDurationInMinutes" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="form-group col-6">
+        <label asp-for="StartTime" class="control-label">Start Time</label>
+        <input asp-for="StartTime" class="form-control" type="time" />
+        <span asp-validation-for="StartTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-6">
+        <label asp-for="EndTime" class="control-label">End time</label>
+        <input asp-for="EndTime" class="form-control" type="time" />
+        <span asp-validation-for="EndTime" class="text-danger"></span>
+    </div>
+    </div>
+   
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
