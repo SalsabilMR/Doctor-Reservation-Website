@@ -3,6 +3,7 @@ using DoctorReservation.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using DoctorReservation.Services;
 
 
 namespace DoctorReservation.Controllers
@@ -12,13 +13,17 @@ namespace DoctorReservation.Controllers
         UserManager<ApplicationUser> _userManager;
         SignInManager<ApplicationUser> _signInManager;
         RoleManager<IdentityRole> _roleManager;
+        PatientServices _patientServices;
+        DoctorServices _doctorServices;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager , PatientServices patientServices , DoctorServices doctorServices)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-
+            _patientServices = patientServices;
+            _doctorServices = doctorServices ; 
         }
 
         [HttpGet]
@@ -125,21 +130,39 @@ namespace DoctorReservation.Controllers
 
                     if (result.Succeeded)
                     {
-                        // 🔍 نحسب الرول هنا
                         if (await _userManager.IsInRoleAsync(user, "Doctor"))
                         {
-                            return RedirectToAction("Profile", "Doctor", new { userId = user.Id });
+                            var doctor = _doctorServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == user.Id);
+
+                            if (doctor != null)
+                            {
+                                return RedirectToAction("Profile", "Doctor", new { userId = user.Id });
+                            }
+                            else
+                            {
+                                return RedirectToAction("Create", "Doctor", new { userId = user.Id });
+                            }
                         }
                         else if (await _userManager.IsInRoleAsync(user, "User"))
                         {
-                            return RedirectToAction("Profile", "Patient", new { userId = user.Id });
+                            var patient = _patientServices.GetAll()?.FirstOrDefault(p => p.ApplicationUserId == user.Id);
+
+                            if (patient != null)
+                            {
+                                return RedirectToAction("Profile", "Patient", new { userId = user.Id });
+                            }
+                            else
+                            {
+                                return RedirectToAction("Create", "Patient", new { userId = user.Id });
+                            }
                         }
                         else
                         {
-                            // لو له رول تاني أو مفيش رول
+                            // لو مش Doctor ولا User
                             return RedirectToAction("Index", "Home");
                         }
                     }
+
                     else
                     {
                         ModelState.AddModelError("", "❌ Invalid Password");
