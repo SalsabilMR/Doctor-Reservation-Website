@@ -70,7 +70,7 @@ namespace DoctorReservation.Controllers
             if (ModelState.IsValid)
             {
                 PatientServices.Edit(Patient);
-                return RedirectToAction("Profile");
+                return RedirectToAction("Profile", "Patient" ,new { userId = Patient.ApplicationUserId });
             }
 
             return View();
