@@ -56,20 +56,34 @@
                     <!-- <img src="/assets/img/logo.png" alt=""> -->
                     <h1 class="sitename">TABIBAK</h1>
                 </a>
-
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="text-end p-2 bg-light border-bottom">
+                        <strong>Welcome @User.Identity.Name</strong>
+                    </div>
+                }
                 <nav id="navmenu" class="navmenu">
                     <ul>
                         <li><a href="/Doctor/Index">Home<br></a></li>
-                        <li><a href="#doctors">Doctors</a></li>
-                        <li><a href="#Schedule">Add Schedule             </a></li>
+                        <li><a href="/Schedule/Create">Add Schedule</a></li>
+                        <li><a href="/Doctor/Profile">Profile</a></li>
+                        <li><a href="/Doctor/Edit">Edit Profile</a></li>
+                        <li>
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="btn btn-danger">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
 
-                <a class="cta-btn d-none d-sm-block" href="/Doctor/Edit">View Reservation</a>
+                <a class="cta-btn d-none d-sm-block" href="/Appointment/MyAppointments">My Appointments</a>
 
+                
 
             </div>
+          
+
 
         </div>
 

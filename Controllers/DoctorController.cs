@@ -74,7 +74,7 @@ namespace DoctorReservation.Controllers
             if (ModelState.IsValid)
             {
                 DocServices.Edit(doctor); 
-                return RedirectToAction("Doctor");
+                return RedirectToAction("Profile");
             }
 
             return View();

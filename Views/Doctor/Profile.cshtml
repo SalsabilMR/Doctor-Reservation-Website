@@ -1,14 +1,14 @@
 ﻿@model DoctorReservation.Models.Doctor
 
 @{
-    ViewData["Title"] = "Docror Profile";
+    ViewData["Title"] = "Profile Data";
     Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
 
-<div class="container mt-5">
+<div class="container mt-5" data-aos="fade-up">
     <h2 class="mb-4 text-center">Doctor Profile</h2>
 
-    <div class="card shadow-lg p-4">
+    <div class="card shadow-lg p-4 mb-4">
         <div class="row">
             <div class="col-md-4 text-center">
                 @if (!string.IsNullOrEmpty(Model.ImagePath))
@@ -42,7 +42,7 @@
                     <dd class="col-sm-8">@Model.specialization</dd>
 
                     <dt class="col-sm-4">Fee:</dt>
-                    <dd class="col-sm-8">@Model.Fees جنيه</dd>
+                    <dd class="col-sm-8">@Model.Fees L.E</dd>
 
                     <dt class="col-sm-4">Discribtion:</dt>
                     <dd class="col-sm-8">@Model.Description</dd>
@@ -51,7 +51,7 @@
                     <dd class="col-sm-8">
                         @if (!string.IsNullOrEmpty(Model.CertificatePath))
                         {
-                             <a href="@Model.CertificatePath" class="btn btn-sm btn-outline-primary" target="_blank">عرض الشهادة</a>
+                            <a href="@Model.CertificatePath" class="btn btn-sm btn-outline-primary" target="_blank">Certificate</a>
                         }
                         else
                         {
@@ -63,7 +63,7 @@
         </div>
 
         <div class="mt-4 text-end">
-            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Profile Edit </a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit Profile </a>
         </div>
     </div>
 </div>

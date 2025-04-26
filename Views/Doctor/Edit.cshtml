@@ -3,62 +3,66 @@
     ViewData["Title"] = "Edit Profile";
     Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
+<div class="container d-flex justify-content-center align-items-center mb-4 mt-4">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 450px;">
+        <h2 class="text-center mb-4">Edit Profile</h2>
+
 <div class="container" data-aos="fade-up" >
 <form asp-action="Edit" method="post" enctype="multipart/form-data" >
     <input type="hidden" asp-for="Id" value="@Model.Id" />
     <div class="row">
-        <div class="col-md-6 form-group  mt-3 mt-md-0">
-        <label asp-for="FirstName"></label>
+        <div class="col-12 form-group  mt-3 mt-md-0">
+        <label asp-for="FirstName">First Name</label>
         <input asp-for="FirstName" class="form-control" value="@Model.FirstName" />
         <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
-         <div class="col-md-6 form-group mt-3 mt-md-0">
-        <label asp-for="LastName"></label>
+        <div class="col-12 form-group mt-3 mt-md-0">
+        <label asp-for="LastName">Last Name</label>
         <input asp-for="LastName" class="form-control" value="@Model.LastName" />
         <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
     </div>
     <div class="row">
-            <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
             <label asp-for="City"></label>
             <input asp-for="City" class="form-control" value="@Model.City" />
             <span asp-validation-for="City" class="text-danger"></span>
         </div>
 
-            <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
             <label asp-for="Location"></label>
             <input asp-for="Location" class="form-control" value="@Model.Location" />
             <span asp-validation-for="Location" class="text-danger"></span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
         <label asp-for="Email"></label>
         <input asp-for="Email" class="form-control" value="@Model.Email" />
         <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
-        <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
         <label asp-for="Mobile"></label>
         <input asp-for="Mobile" class="form-control" value="@Model.Mobile" />
         <span asp-validation-for="Mobile" class="text-danger"></span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
             <label asp-for="Fees"></label>
             <input asp-for="Fees" class="form-control" value="@Model.Fees" />
             <span asp-validation-for="Fees" class="text-danger"></span>
         </div>
 
-            <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
             <label asp-for="specialization"></label>
             <input asp-for="specialization" class="form-control" value="@Model.specialization" />
             <span asp-validation-for="specialization" class="text-danger"></span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 form-group mt-3 mt-md-0">
+                    <div class="col-12 form-group mt-3 mt-md-0">
         <label asp-for="Description"></label>
         <textarea asp-for="Description" class="form-control" value="@Model.Description"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
@@ -67,13 +71,13 @@
     <div class="row">
         @if (!string.IsNullOrEmpty(Model.ImagePath))
         {
-            <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <div class="col-12 form-group mt-3 mt-md-0">
             <label>Current Image:</label><br />
             <img src="@Url.Content("~/" + Model.ImagePath)" alt="Current Image" width="150" />
             </div>
         @if (!string.IsNullOrEmpty(Model.CertificatePath))
         {
-            <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <div class="col-12 form-group mt-3 mt-md-0">
             <label>Current Certificate:</label><br />
             <img src="@Url.Content("~/" + Model.CertificatePath)" alt="Current Image" width="150" />
             </div>
@@ -82,24 +86,25 @@
            
     </div>
     <div class="row">
-            <div class="col-md-6 form-group mt-5 mt-md-0">
+                <div class="col-12 form-group mt-5 mt-md-0">
                 <label asp-for="Image">Upload New Image</label>
                 <input asp-for="Image" type="file" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            <div class="col-md-6 form-group mt-5 mt-md-0">
+                    <div class="col-12 form-group mt-5 mt-md-0">
             <label asp-for="Certificate">Upload New Certificate</label>
             <input asp-for="Certificate" type="file" class="form-control" />
             <span asp-validation-for="Certificate" class="text-danger"></span>
         </div>
     </div>
 
-        <div class="text-center m-3">
-            <button type="submit" class="btn btn-primary mr-5  mt-md-0">Save</button>
-         <a asp-action="Index" class="btn btn-secondary  mr-5  mt-md-0">Cancel</a>
+        <div class=" mt-1" >
+                    <button type="submit" class="btn btn-primary mt-2  " data-aos="fade-up">Save</button>
+                    <a asp-action="Profile" class="btn btn-secondary  mt-2  " data-aos="fade-up">Cancel</a>
        </div>
    
 </form>
+</div>
 </div>
 @* 
 @section Scripts {

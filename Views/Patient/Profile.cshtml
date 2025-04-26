@@ -1,13 +1,18 @@
 ﻿@model DoctorReservation.Models.Patient
 
-<div class="container mt-4">
-    <h2 class="mb-4"> Patient Profile </h2>
+<div class="container mt-4" data-aos="fade-up">
+    <h2 class="mb-4"> Profile Data </h2>
 
-    <div class="card p-3">
+    <div class="card p-3 mb-4">
         <p><strong>Name:</strong> @Model.FirstName @Model.LastName</p>
         <p><strong>Gender:</strong> @Model._Gender</p>
         <p><strong>BirthDate:</strong> @Model.BirthOfDate.ToShortDateString()</p>
         <p><strong>Mobile:</strong> @Model.Mobile</p>
+
+        <div class="mt-4 text-end">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"> Edit Profile </a>
+        </div>
+
     </div>
 </div>
 
