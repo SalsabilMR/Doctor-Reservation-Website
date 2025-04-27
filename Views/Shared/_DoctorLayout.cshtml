@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user?.Id;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -63,15 +70,19 @@
                     </div>
                 }
                 <nav id="navmenu" class="navmenu">
+                    
                     <ul>
-                        <li><a href="/Doctor/Index">Home<br></a></li>
-                        <li><a href="/Schedule/Create">Add Schedule</a></li>
-                        <li><a href="/Doctor/Profile">Profile</a></li>
-                        <li><a href="/Doctor/Edit">Edit Profile</a></li>
+                        <li><a href="@Url.Action("Index", "Home", new { userId = userId })">Home<br></a></li>
+                        <li><a href="@Url.Action("AddSchedule", "Doctor", new { userId = userId })">Add Schedule</a></li>
+                        <li><a href="@Url.Action("Profile", "Doctor", new { userId = userId })">My Profile</a></li>
+                        <li><a href="@Url.Action("EditProfile", "Doctor", new { userId = userId })">Edit Profile</a></li>
                         <li>
+                            @if (User.Identity.IsAuthenticated)
+                                {
                             <form method="post" asp-controller="Account" asp-action="Logout">
                                 <button type="submit" class="btn btn-danger">Logout</button>
                             </form>
+                                }
                         </li>
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -168,6 +179,9 @@
 
     <!-- Preloader -->
     <div id="preloader"></div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     <!-- Vendor JS Files -->
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

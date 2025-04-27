@@ -20,8 +20,8 @@ namespace DoctorReservation.Models
         [DataType(DataType.Date)]
         public DateTime BirthOfDate { get; set; }
         [Required(ErrorMessage = "Please enter your mobile")]
-        [Phone(ErrorMessage = "Invalid Number")]
-        public int Mobile { get; set; }
+        [RegularExpression(@"^01[0-2,5]{1}[0-9]{8}$", ErrorMessage = "Invalid egyptian number")]
+        public string Mobile { get; set; }
 
         public enum Gender
         {

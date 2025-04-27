@@ -23,8 +23,6 @@
   <ItemGroup>
     <Folder Include="Validators\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="wwwroot\Uploads\Images\" />
-    <Folder Include="wwwroot\Uploads\certificates\" />
   </ItemGroup>
 
 </Project>

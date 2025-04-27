@@ -44,6 +44,10 @@ namespace DoctorReservation.Services
                 // Save path in Database
                 doctor.ImagePath = "Uploads/Images/" + fileName;
             }
+            else
+            {
+                doctor.ImagePath = "Uploads/Images/default-user.png";
+            }
 
             if (doctor.Certificate != null && doctor.Certificate.Length > 0)
             {
@@ -55,6 +59,11 @@ namespace DoctorReservation.Services
                 }
                 doctor.CertificatePath = "Uploads/Certificates/" + fileName;
             }
+            else
+            {
+                doctor.CertificatePath = "Uploads/Certificates/Certificate.png";
+            }
+
 
             Context.Doctors.Add(doctor);
             return Context.SaveChanges();

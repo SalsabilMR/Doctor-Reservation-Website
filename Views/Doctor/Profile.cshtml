@@ -13,7 +13,7 @@
             <div class="col-md-4 text-center">
                 @if (!string.IsNullOrEmpty(Model.ImagePath))
                 {
-                    <img src="@Model.ImagePath" alt="Doctor Image" class="img-fluid rounded" style="max-height: 250px;" />
+                    <img src="@Url.Content("~/" + Model.ImagePath)"  alt="Doctor Image" class="img-fluid rounded" style="max-height: 250px;" />
                 }
                 else
                 {
@@ -51,7 +51,7 @@
                     <dd class="col-sm-8">
                         @if (!string.IsNullOrEmpty(Model.CertificatePath))
                         {
-                            <a href="@Model.CertificatePath" class="btn btn-sm btn-outline-primary" target="_blank">Certificate</a>
+                            <a href="@Url.Content("~/" + Model.CertificatePath)" class="btn btn-sm btn-outline-primary" target="_blank">Certificate</a>
                         }
                         else
                         {

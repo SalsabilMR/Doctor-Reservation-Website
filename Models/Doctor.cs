@@ -22,8 +22,8 @@ namespace DoctorReservation.Models
         [EmailAddress(ErrorMessage = "Invalid email")]
         public string? Email { get; set; }
         [Required(ErrorMessage = "Please enter your Mobile")]
-        [Phone(ErrorMessage = "Invalid Number")]
-        public int Mobile { get; set; }
+        [RegularExpression(@"^01[0-2,5]{1}[0-9]{8}$", ErrorMessage = "Invalid egyptian number")]
+        public string Mobile { get; set; }
         [Required(ErrorMessage = "Please enter your fees")]
         public int Fees { get; set; }
         [Required(ErrorMessage = "Please enter your specialization")]
@@ -31,12 +31,12 @@ namespace DoctorReservation.Models
         [Required(ErrorMessage = "Please enter your Description")]
         public string? Description { get; set; }
 
-        [Required(ErrorMessage = "Please enter your Certificate")]
+       // [Required(ErrorMessage = "Please enter your Certificate")]
         public string? CertificatePath { get; set; } //save file name & file path in DB
         [NotMapped]
         public IFormFile? Certificate { get; set; } //recieve file when upload
 
-        [Required(ErrorMessage = "Please enter your Image")]
+        //[Required(ErrorMessage = "Please enter your Image")]
         public string? ImagePath { get; set; } //save file name in DB
         [NotMapped]
         public IFormFile? Image { get; set; }

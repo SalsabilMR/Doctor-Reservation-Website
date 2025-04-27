@@ -73,8 +73,8 @@ namespace DoctorReservation.Controllers
         {
             if (ModelState.IsValid)
             {
-                DocServices.Edit(doctor); 
-                return RedirectToAction("Profile");
+                DocServices.Edit(doctor);
+                return RedirectToAction("Profile", "Doctor", new { userId = doctor.ApplicationUserId });
             }
 
             return View();
@@ -82,7 +82,8 @@ namespace DoctorReservation.Controllers
 
         public IActionResult Profile(string userId)
         {
-            var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
+            //var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
+            var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId.Equals(userId, StringComparison.OrdinalIgnoreCase));
 
             if (doctor == null)
             {
