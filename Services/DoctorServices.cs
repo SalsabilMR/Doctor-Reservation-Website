@@ -46,7 +46,7 @@ namespace DoctorReservation.Services
             }
             else
             {
-                doctor.ImagePath = "Uploads/Images/default-user.png";
+                doctor.ImagePath = "Uploads/Images/default-user.jpg";
             }
 
             if (doctor.Certificate != null && doctor.Certificate.Length > 0)

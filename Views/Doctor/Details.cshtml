@@ -4,22 +4,24 @@
  
 }
 
-<div class="container">
-<div class="row gy-4">
-    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="team-member d-flex align-items-start">
-                <div class="pic"><img src="@Url.Content("~/" + @Model.ImagePath)" width="200" class="img-fluid" alt="Doctor Image"></div>
+
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+            <div class="card shadow-lg p-4" style="width: 100%; max-width: 450px;" data-aos="fade-up">
+            <div class="pic"><img src="@Url.Content("~/" + @Model.ImagePath)" width="200" class="img-fluid" alt="Doctor Image"></div>
             <div class="member-info">
                     <h4>@Model.FirstName @Model.LastName</h4>
                     <p>specialization : @Model.specialization</p>
-                    <span>@Model.Description</span>
-                    <p>Fees : @Model.Fees</p>
-                <div class="social"> <i class="bi bi-geo-alt-fill">  @Model.City | @Model.Location</i></div>
-                <div class="social"><i class="bi bi-envelope-at-fill">  @Model.Email</i></div>
-                <div class="social"> <i class="bi bi-phone-fill">  @Model.Mobile</i></div>
-                
+                    <p> @Model.Description</p>
+                    <p>Fees : @Model.Fees L.E</p>
+                <div class="social mb-2"> <i class="bi bi-geo-alt-fill">  @Model.City | @Model.Location</i></div>
+                <div class="social mb-2"><i class="fa-solid fa-square-envelope"></i>   @Model.Email</div>
+                <div class="social mb-2"> <i class="bi bi-phone-fill">  @Model.Mobile</i></div>
+                <div class="text-end">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-warning mt-2 "><i class="fa-solid fa-circle-left"></i>  Back </a>
+            </div>
             </div>
         </div>
     </div><!-- End Team Member -->
-</div>
-</div>
+

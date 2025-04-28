@@ -27,7 +27,7 @@ namespace DoctorReservation.Models
         [Required(ErrorMessage = "Please enter your fees")]
         public int Fees { get; set; }
         [Required(ErrorMessage = "Please enter your specialization")]
-        public string? specialization { get; set; }
+        public Specialization specialization { get; set; }
         [Required(ErrorMessage = "Please enter your Description")]
         public string? Description { get; set; }
 
@@ -48,6 +48,20 @@ namespace DoctorReservation.Models
 
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 
+        public enum Specialization
+        {
+            Cardiology,       // قلب
+            Dermatology,      // جلدية
+            Dentistry,        // أسنان
+            Neurology,        // مخ وأعصاب
+            Pediatrics,       // أطفال
+            Orthopedics,      // عظام
+            Psychiatry,       // نفسي
+            Ophthalmology,    // عيون
+            Gynecology,       // نساء وتوليد
+            GeneralSurgery    // جراحة عامة
+                              
+        }
 
 
     }
