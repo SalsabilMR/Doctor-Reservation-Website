@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user?.Id;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -61,12 +68,25 @@
                     <!-- <img src="/assets/img/logo.png" alt=""> -->
                     <h1 class="sitename">TABIBAK</h1>
                 </a>
-
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="text-end p-2 bg-light border-bottom">
+                        <strong>Welcome @User.Identity.Name</strong>
+                    </div>
+                }
                 <nav id="navmenu" class="navmenu">
                     <ul>
                         <li><a href="/Home/Index">Home<br></a></li>
                         <li><a href="/Doctor/GetAll">Doctors</a></li>
                         <li><a href="/Home/AboutUs">Contact              </a></li>
+                        <li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
+                            }
+                        </li>
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
