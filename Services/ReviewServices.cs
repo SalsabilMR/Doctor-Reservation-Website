@@ -14,6 +14,11 @@ namespace DoctorReservation.Services
             var doctor = Context.Doctors.FirstOrDefault(d => d.ApplicationUserId == UserId);
             return doctor;
         }
+        public Patient? GetPatientByUserId(String UserId)
+        {
+            var patient = Context.Patients.FirstOrDefault(d => d.ApplicationUserId == UserId);
+            return patient;
+        }
         public int Create(Review review)
         {
             review.Rating = 0;  //----------------
