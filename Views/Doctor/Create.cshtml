@@ -1,10 +1,12 @@
 ﻿@model DoctorReservation.Models.Doctor
 @{
     ViewData["Title"] = "Add Doctor";
-    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
+<section class="hero section light-background">
 
-<div class="container d-flex justify-content-center align-items-center mb-4 mt-4">
+    <img src="~/assets/img/departments-3.jpg" alt="" data-aos="fade-in">
+
+<div class="container d-flex justify-content-center align-items-center mb-4 mt-4" style="opacity: 0.9;">
     <div class="card shadow-lg p-4" style="width: 100%; max-width: 450px;" data-aos="fade-up">
         <h2 class="text-center mb-4">Personal Data</h2>
         <p>You must enter personal data to complete registration</p>
@@ -56,10 +58,11 @@
         <span asp-validation-for="Fees" class="text-danger"></span>
     </div>
 
-            <div class="form-group col-12" >
-        <label asp-for="specialization"></label>
-        <input asp-for="specialization" class="form-control" />
-        <span asp-validation-for="specialization" class="text-danger"></span>
+    <div class="form-group" col-12>
+        <label for="specialization">Specialization</label>
+        <select asp-for="specialization" class="form-select" asp-items="Html.GetEnumSelectList<DoctorReservation.Models.Doctor.Specialization>()">
+            <option value="">Select Specialization...</option>
+        </select>
     </div>
 
             <div class="form-group col-12" >
@@ -85,6 +88,7 @@
 </form>
 </<div>
 </div>
+</section>
 @* @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

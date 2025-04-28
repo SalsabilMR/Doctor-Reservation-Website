@@ -15,8 +15,22 @@
             <strong>Here, you can easily book your appointment with the best doctors in a few minutes. </strong>
         </div><!-- End Welcome -->
 
+        <form asp-action="SearchBySpecialization" method="get" class="d-flex mb-4">
+            <select name="specialization" class="form-select me-2">
+                <option value="">Select Specialization...</option>
+                @foreach (var spec in Enum.GetValues(typeof(DoctorReservation.Models.Doctor.Specialization)))
+                {
+                    <option value="@spec">@spec</option>
+                }
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
 
+
+@if (Model != null && Model.Any())
+{
         <div class="row gy-4">
+
              @foreach (var doc in Model)
             {
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="0+@CountToDelay">
@@ -26,9 +40,9 @@
                             <h4>@doc.FirstName @doc.LastName</h4>
                             <span>@doc.specialization</span>
                             <p>Address: @doc.City @doc.Location</p>
-
-                            <a asp-controller="Doctor" asp-action="Details" asp-route-id="@doc.Id" class="btn btn-primary mt-5"><i class="fa-solid fa-circle-info"></i>  More Info </a>
-                    </div>
+                                    <a asp-controller="Doctor" asp-action="Details" asp-route-id="@doc.Id" class="btn btn-primary mt-5"><i class="fa-solid fa-circle-info"></i>  More Info </a>
+                            </div>
+                           
                 </div>
             </div><!-- End Team Member -->
             }
@@ -36,8 +50,14 @@
          
            
 
-        </div>
-
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center">
+                There are no doctors available for this specialty at the moment.
+            </div>
+        }
     </div>
 
 </section><!-- /Doctors Section -->

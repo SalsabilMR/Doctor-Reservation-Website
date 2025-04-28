@@ -1,7 +1,9 @@
 using DoctorReservation.Models;
 using DoctorReservation.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using static DoctorReservation.Models.Doctor;
 
 namespace DoctorReservation.Controllers
 {
@@ -18,18 +20,30 @@ namespace DoctorReservation.Controllers
 
         public IActionResult Index()
         {
-            var doctors = _doctorServices.GetAll()?.Take(5).ToList();
+            var doctors = _doctorServices.GetAll()?.ToList();
 
-            var specializations = _doctorServices.GetAll()
-                                   ?.Select(d => d.specialization)
-                                   .Distinct()
-                                   .ToList();
+            //var specializations = _doctorServices.GetAll()
+            //                       ?.Select(d => d.specialization)
+            //                       .Distinct()
+            //                       .ToList();
 
-            ViewBag.Specializations = specializations;
+            //ViewBag.Specializations = specializations;
             return View(doctors);
+        }
+        public IActionResult SearchBySpecialization(Specialization specialization)
+        {
+            var doctors = _doctorServices.GetAll()?
+                .Where(d => d.specialization == specialization)
+                .ToList();
+         
+            return View("Index", doctors);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult AboutUs()
         {
             return View();
         }

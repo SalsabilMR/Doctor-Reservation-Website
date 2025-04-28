@@ -4,7 +4,10 @@
 @{
     ViewData["Title"] = "Add Personal data";
 }
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<section class="hero section light-background">
+
+    <img src="~/assets/img/departments-5.jpg" alt="" data-aos="fade-in">
+<div class="container d-flex justify-content-center align-items-center vh-100" style="opacity: 0.9;">
     <div class="card shadow-lg p-4" style="width: 100%; max-width: 450px;" data-aos="fade-up">
         <h2 class="text-center mb-4">Personal Data</h2>
         <p>You must enter personal data to complete registration</p>
@@ -46,6 +49,7 @@
 </form>
 </div>
 </div>
+</section>
 @* @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

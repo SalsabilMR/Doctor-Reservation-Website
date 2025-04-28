@@ -54,12 +54,12 @@
             <input asp-for="Fees" class="form-control" value="@Model.Fees" />
             <span asp-validation-for="Fees" class="text-danger"></span>
         </div>
-
-                    <div class="col-12 form-group mt-3 mt-md-0">
-            <label asp-for="specialization"></label>
-            <input asp-for="specialization" class="form-control" value="@Model.specialization" />
-            <span asp-validation-for="specialization" class="text-danger"></span>
-        </div>
+    <div class="form-group" col-12>
+        <label for="specialization">Specialization</label>
+        <select asp-for="specialization" class="form-select" asp-items="Html.GetEnumSelectList<DoctorReservation.Models.Doctor.Specialization>()">
+            <option value="">Select Specialization...</option>
+        </select>
+    </div>
     </div>
     <div class="row">
                     <div class="col-12 form-group mt-3 mt-md-0">

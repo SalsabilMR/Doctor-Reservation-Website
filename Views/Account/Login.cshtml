@@ -1,24 +1,18 @@
 ﻿@using DoctorReservation.ViewModels
 @model LoginViewModel
 
+<section class="hero section light-background">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <title>Login Page</title>
-</head>
-<body>
+    <img src="~/assets/img/hero-bg.jpg" alt="" data-aos="fade-in" style="opacity: 0.7;">
+    <div class="container d-flex justify-content-center align-items-center vh-100" >
+        <div class="card shadow-lg p-4" style="width: 100%; max-width: 450px;" data-aos="fade-up">
+            
     <form method="post">
-       <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
+        
                 <h2 class="text-center">Login</h2>
                 <form>
                     <div class="mb-3">
-                        <label asp-for="UserName"></label>
+                        <label asp-for="UserName">User Name</label>
 		                <input asp-for="UserName" class="form-control" />
 	                	<span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
@@ -35,13 +29,12 @@
                 <div class="text-center mt-2">
                     <small>Don't have an account? <a href="/Account/Register">Register here</a></small>
                 </div>
-            </div>
-        </div>
-       </div>
+         
 
        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     </form>
-</body>
-</html>
-
+            </div>
+        </div>
+    
+</section>

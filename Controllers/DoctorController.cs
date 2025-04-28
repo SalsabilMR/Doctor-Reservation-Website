@@ -82,9 +82,8 @@ namespace DoctorReservation.Controllers
 
         public IActionResult Profile(string userId)
         {
-            //var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
-            var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId.Equals(userId, StringComparison.OrdinalIgnoreCase));
-
+            var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
+  
             if (doctor == null)
             {
                 return RedirectToAction("Create", new { userId = userId });
