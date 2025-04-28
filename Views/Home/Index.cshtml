@@ -35,7 +35,8 @@
             {
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="0+@CountToDelay">
                 <div class="team-member d-flex align-items-start">
-                        <div class="pic"><img src="@doc.ImagePath" alt="Doctor Image " class="img-fluid" ></div>
+
+                            <div class="pic"><img src="@Url.Content("~/" + doc.ImagePath)" alt="Doctor Image " class="img-fluid"></div>
                     <div class="member-info">
                             <h4>@doc.FirstName @doc.LastName</h4>
                             <span>@doc.specialization</span>
