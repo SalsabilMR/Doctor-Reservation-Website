@@ -61,9 +61,9 @@ namespace DoctorReservation.Controllers
             
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string userId)
         {
-            var doc = DocServices.GetDetails(id);
+            var doc = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
             return View(doc);
         }
 
@@ -83,7 +83,7 @@ namespace DoctorReservation.Controllers
         public IActionResult Profile(string userId)
         {
             var doctor = DocServices.GetAll()?.FirstOrDefault(d => d.ApplicationUserId == userId);
-  
+
             if (doctor == null)
             {
                 return RedirectToAction("Create", new { userId = userId });

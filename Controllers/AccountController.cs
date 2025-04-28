@@ -136,7 +136,7 @@ namespace DoctorReservation.Controllers
 
                             if (doctor != null)
                             {
-                                return RedirectToAction("Profile", "Doctor", new { userId = user.Id });
+                                return RedirectToAction("Index", "Doctor", new { userId = user.Id });
                             }
                             else
                             {
